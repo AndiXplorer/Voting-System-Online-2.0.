@@ -1,8 +1,10 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
