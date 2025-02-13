@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 
 dotenv.config();
 
+
 const app = express();
 app.use(express.json());
 
@@ -125,6 +126,20 @@ app.get("/users", async (req, res) => {
     }
 });
 
+// ✅ GET - Numri i perdoruesve qe kane votuar
+app.get("/count", async (req, res) => {
+    try {
+        const count = await User.countDocuments({ isVoted: true });
+
+        res.send(` ${count} `);
+    } catch (err) {
+        console.error("❌ Gabim në marrjen e numrit të përdoruesve që kanë votuar:", err);
+        res.status(500).json({ message: "Ndodhi një gabim, provo përsëri!" });
+    }
+});
+
 // Serveri
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Serveri po funksionon në portin ${PORT}`));
+
+
