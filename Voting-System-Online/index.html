@@ -1,139 +1,166 @@
 <!DOCTYPE html>
 <html lang="sq">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zgjedhjet 2025 - Kosovë</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
-
-<!-- navbar -->
+  </head>
+  <body>
+    <!-- navbar -->
     <nav class="navbar">
-        <div class="logo">
-            <img src="/image/download-removebg-preview-transformed.png" alt="KQZ Logo">
-        </div>
-        <div class="nav-links">
-            <a href="#home">Ballina</a>
-            <a href="#candidates">Kandidatët</a>
-            <a href="#polls">Sondazhet</a>
-            <a href="#vote" class="vote-btn vote">Voto Online</a>
-        </div>
+      <div class="logo">
+        <img
+          src="/image/download-removebg-preview-transformed.png"
+          alt="KQZ Logo"
+        />
+      </div>
+      <div class="nav-links">
+        <a href="#home">Ballina</a>
+        <a href="#candidates">Kandidatët</a>
+        <a href="#polls">Sondazhet</a>
+        <a href="#vote" class="vote-btn vote">Voto Online</a>
+      </div>
     </nav>
 
-<!-- koha per votim  -->
+    <!-- koha per votim  -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="animate-title">Zgjedhjet Parlamentare 2025</h1>
-            <div id="countdown" class="countdown">
-                <div class="countdown-item">
-                    <span id="days">00</span>
-                    <span>Ditë</span>
-                </div>
-                <div class="countdown-item">
-                    <span id="hours">00</span>
-                    <span>Orë</span>
-                </div>
-                <div class="countdown-item">
-                    <span id="minutes">00</span>
-                    <span>Minuta</span>
-                </div>
-            </div>
-            <p class="voting-date">Data e votimit: 9 Shkurt 2025</p>
+      <div class="hero-content">
+        <h1 class="animate-title">Zgjedhjet Parlamentare 2025</h1>
+        <div id="countdown" class="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <span>Ditë</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <span>Orë</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <span>Minuta</span>
+          </div>
         </div>
+        <p class="voting-date">Data e votimit: 9 Shkurt 2025</p>
+      </div>
     </section>
 
-<!-- kandidatet per deputet card -->
+    <!-- kandidatet per deputet card -->
     <section id="candidates" class="candidates">
-        <h2>Kandidatët Kryesorë</h2>
-        <div class="candidates-grid">
-            <div class="candidate-card">
-                <img src="/image/ALBINKURTI.jpg" alt="Kandidati 1">
-                <h3>Albin Kurti</h3>
-                <p>Vetëvendosje</p>
-            </div>
-            <div class="candidate-card">
-                <img src="/image/LUMIRABDIXHIKU.png" alt="Kandidati 2">
-                <h3>Lumir Abdixhiku</h3>
-                <p>Lidhja Demokratike e Kosovës</p>
-            </div>
-            <div class="candidate-card">
-                <img src="/image/BEDRIHAMZA.jpg" alt="Kandidati 3">
-                <h3>Bedri Hamza</h3>
-                <p>Partia Demokratike e Kosovës</p>
-            </div>
+      <h2>Kandidatët Kryesorë</h2>
+      <div class="candidates-grid">
+        <div class="candidate-card">
+          <img src="/image/ALBINKURTI.jpg" alt="Kandidati 1" />
+          <h3>Albin Kurti</h3>
+          <p>Vetëvendosje</p>
         </div>
+        <div class="candidate-card">
+          <img src="/image/LUMIRABDIXHIKU.png" alt="Kandidati 2" />
+          <h3>Lumir Abdixhiku</h3>
+          <p>Lidhja Demokratike e Kosovës</p>
+        </div>
+        <div class="candidate-card">
+          <img src="/image/BEDRIHAMZA.jpg" alt="Kandidati 3" />
+          <h3>Bedri Hamza</h3>
+          <p>Partia Demokratike e Kosovës</p>
+        </div>
+      </div>
     </section>
 
-<!-- sondazhet e fundit -->
+    <!-- sondazhet e fundit -->
     <section id="polls" class="polls">
-        <h2>Sondazhet e Fundit</h2>
-        <div class="poll-chart">
-            <div class="poll-bar" data-party="VV" data-percentage="45">
-                <span class="party-name">Vetëvendosje</span>
-                <div class="bar"><span class="percentage">45%</span></div>
-            </div>
-            <div class="poll-bar" data-party="LDK" data-percentage="25">
-                <span class="party-name">LDK</span>
-                <div class="bar"><span class="percentage">25%</span></div>
-            </div>
-            <div class="poll-bar" data-party="PDK" data-percentage="15">
-                <span class="party-name">PDK</span>
-                <div class="bar"><span class="percentage">15%</span></div>
-            </div>
-            <div class="poll-bar" data-party="AAK" data-percentage="10">
-                <span class="party-name">AAK</span>
-                <div class="bar"><span class="percentage">10%</span></div>
-            </div>
+      <h2>Sondazhet e Fundit</h2>
+      <div class="poll-chart">
+        <div class="poll-bar" data-party="VV" data-percentage="45">
+          <span class="party-name">Vetëvendosje</span>
+          <div class="bar"><span class="percentage">45%</span></div>
         </div>
+        <div class="poll-bar" data-party="LDK" data-percentage="25">
+          <span class="party-name">LDK</span>
+          <div class="bar"><span class="percentage">25%</span></div>
+        </div>
+        <div class="poll-bar" data-party="PDK" data-percentage="15">
+          <span class="party-name">PDK</span>
+          <div class="bar"><span class="percentage">15%</span></div>
+        </div>
+        <div class="poll-bar" data-party="AAK" data-percentage="10">
+          <span class="party-name">AAK</span>
+          <div class="bar"><span class="percentage">10%</span></div>
+        </div>
+      </div>
     </section>
 
-<!-- votimi online -->
+    <!-- votimi online -->
     <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <h2>Kyçu për të Votuar</h2>
-            <form id="loginForm">
-                <input type="text" placeholder="Numri Personal" required>
-                <input type="password" placeholder="Fjalëkalimi" required>
-                <button type="submit">Kyçu</button>
-            </form>
-        </div>
+      <div class="modal-content">
+        <h2>Kyçu për të Votuar</h2>
+        <form id="loginForm">
+          <input type="text" placeholder="Numri Personal" required />
+          <input type="password" placeholder="Fjalëkalimi" required />
+          <button type="submit">Kyçu</button>
+          <p>
+            Nuk ke llogari?
+            <a href="#" onclick="openSignup()">Regjistrohu</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- regjistrimi -->
+    <div id="signinModal" class="modal">
+      <div class="modal-content">
+        <h2>Regjistrohu për të Votuar</h2>
+        <form id="signupForm">
+          <input
+            type="text"
+            id="signupPersonalNumber"
+            placeholder="Numri Personal"
+            required
+          />
+          <input
+            type="password"
+            id="signupPassword"
+            placeholder="Fjalëkalimi"
+            required
+          />
+          <button type="submit" id="registerBtn">Regjistrohu</button>
+          <p>Ke llogari? <a href="#" onclick="openLogin()">Kyçu</a></p>
+        </form>
+      </div>
     </div>
 
     <div id="votingSystem" class="voting-system hidden">
-        <h2>Sistemi i Votimit Online</h2>
-        <div class="party-list">
-        </div>
-        <div class="deputy-list hidden">
-        </div>
+      <h2>Sistemi i Votimit Online</h2>
+      <div class="party-list"> </div>
+      <div class="deputy-list hidden"> </div>
     </div>
 
     <script src="script.js"></script>
     <script>
- 
-        function setCookie(name, value, days) {
-            const d = new Date();
-            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = "expires=" + d.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-        }
+      function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = 'expires=' + d.toUTCString();
+        document.cookie = name + '=' + value + ';' + expires + ';path=/';
+      }
 
-        function getCookie(name) {
-            const cname = name + "=";
-            const decodedCookie = decodeURIComponent(document.cookie);
-            const ca = decodedCookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(cname) == 0) {
-                    return c.substring(cname.length, c.length);
-                }
-            }
-            return "";
+      function getCookie(name) {
+        const cname = name + '=';
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(cname) == 0) {
+            return c.substring(cname.length, c.length);
+          }
         }
+        return '';
+      }
     </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
 </html>
