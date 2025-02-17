@@ -21,7 +21,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Modeli User
 const userSchema = new mongoose.Schema({
-    leternjoftimi: { type: String, required: true, unique: true },
+    leternjoftimi: {
+        type: Number, required: true, unique: true
+    },
     password: { type: String, required: true },
     isVoted: { type: Boolean, default: false }
 });

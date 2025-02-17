@@ -91,7 +91,7 @@ function openLogin() {
 signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const leternjoftimi = signupForm.querySelector('input[type="text"]').value;
+    const leternjoftimi = signupForm.querySelector('input[type="number"]').value;
     const password = signupForm.querySelector('input[type="password"]').value;
 
     if (!leternjoftimi || !password) {
@@ -147,7 +147,7 @@ loginBtn.addEventListener('click', (e) => {
 
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const leternjoftimi = loginForm.querySelector('input[type="text"]').value;
+    const leternjoftimi = loginForm.querySelector('input[type="number"]').value;
     const password = loginForm.querySelector('input[type="password"]').value;
 
     if (validateLogin(leternjoftimi, password)) {
@@ -173,11 +173,6 @@ function validateLogin(personalNumber, password) {
         alert('Numri personal duhet të ketë së paku 6 karaktere!');
         return false;
     }
-
-    // if (typeof personalNumber !== 'number') {
-    //     alert('Numri personal duhet të jetë numër!');
-    //     return false;
-    // }
 
     if (password.length < 6) {
         alert('Fjalëkalimi duhet të ketë së paku 6 karaktere!');
