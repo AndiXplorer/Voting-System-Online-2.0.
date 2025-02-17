@@ -1,6 +1,6 @@
 //homepage
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (getCookie('visited')) {
         Swal.fire({
             title: 'Mirësevini përsëri!',
@@ -23,7 +23,7 @@ window.addEventListener('scroll', () => {
 });
 
 function updateCountdown() {
-    const electionDate = new Date('February 9, 2025 00:00:00').getTime();
+    const electionDate = new Date().getTime();
     const now = new Date().getTime();
     const distance = electionDate - now;
 
@@ -74,6 +74,58 @@ const loginBtn = document.querySelector('.vote-btn');
 const loginModal = document.getElementById('loginModal');
 const votingSystem = document.getElementById('votingSystem');
 const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById("signupForm");
+const registerBtn = document.getElementById("registerBtn")
+const errorMessage = document.querySelector(".errorMessage");
+
+function openSignup() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("signinModal").style.display = "flex";
+}
+
+function openLogin() {
+    document.getElementById("signinModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "flex";
+}
+
+signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const leternjoftimi = signupForm.querySelector('input[type="number"]').value;
+    const password = signupForm.querySelector('input[type="password"]').value;
+
+    if (!leternjoftimi || !password) {
+        alert("Ju lutemi plotësoni të gjitha fushat.");
+        return;
+    }
+
+    try {
+        await validateLogin(leternjoftimi, password);
+
+        const response = await axios.post("http://localhost:5000/register", {
+            leternjoftimi,
+            password,
+        });
+
+        if (response.data.success) {
+            signinModal.style.display = 'none';
+            votingSystem.classList.remove('hidden');
+            initializeVotingSystem();
+            scrollToVotingSystem();
+        } else {
+            alert("Gabim: " + response.data.message);
+        }
+    } catch (error) {
+        if (error.response) {
+            alert(`Gabim: ${error.response.data.message || "Nuk mund të lidhemi me serverin."}`);
+        } else {
+            alert("Gabim: Nuk mund të lidhemi me serverin.");
+        }
+    }
+});
+
+
+
 
 loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -93,24 +145,35 @@ loginBtn.addEventListener('click', (e) => {
     }
 });
 
-loginForm.addEventListener('submit', (e) => {
+loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const personalNumber = loginForm.querySelector('input[type="text"]').value;
+    const leternjoftimi = loginForm.querySelector('input[type="number"]').value;
     const password = loginForm.querySelector('input[type="password"]').value;
 
-    if (validateLogin(personalNumber, password)) {
-        loginModal.style.display = 'none';
-        votingSystem.classList.remove('hidden');
-        initializeVotingSystem();
-        scrollToVotingSystem();
+    if (validateLogin(leternjoftimi, password)) {
+        try {
+            const response = await axios.post("http://localhost:5000/login", {
+                leternjoftimi,
+                password,
+            });
+
+            loginModal.style.display = "none";
+            votingSystem.classList.remove("hidden");
+            initializeVotingSystem();
+            scrollToVotingSystem();
+        } catch (error) {
+            errorMessage.style.display = "flex";
+        }
     }
 });
+
 
 function validateLogin(personalNumber, password) {
     if (personalNumber.length < 6) {
         alert('Numri personal duhet të ketë së paku 6 karaktere!');
         return false;
     }
+
     if (password.length < 6) {
         alert('Fjalëkalimi duhet të ketë së paku 6 karaktere!');
         return false;
@@ -139,7 +202,7 @@ function generateDeputies(count, party) {
 
 function initializeVotingSystem() {
     const partyList = document.querySelector('.party-list');
-    
+
     partyList.innerHTML = parties.map((party, index) => `
         <div class="party-option" data-party-id="${party.id}" style="animation: fadeInUp ${0.3 + index * 0.1}s ease forwards">
             <h3>${party.name}</h3>
@@ -215,7 +278,7 @@ function submitVote() {
         alert('Ju lutem zgjedhni së paku një deputet!');
         return;
     }
-    
+
     votingSystem.innerHTML = `
         <div class="success-message" style="text-align: center; animation: fadeInUp 0.5s ease">
             <h2>Faleminderit për votimin tuaj!</h2>

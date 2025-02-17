@@ -1,530 +1,546 @@
 /* css homepage */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
 }
 
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 4rem;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    z-index: 1000;
-    transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 4rem;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-    padding: 0.5rem 4rem;
-    background: rgba(255, 255, 255, 1);
+  padding: 0.5rem 4rem;
+  background: rgba(255, 255, 255, 1);
 }
 
 .logo img {
-    height: 100px;
-    transition: height 0.3s ease;
+  height: 100px;
+  transition: height 0.3s ease;
 }
 
 .navbar.scrolled .logo img {
-    height: 50px;
+  height: 50px;
 }
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #007bff;
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .vote-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-    color: white !important;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-    transition: all 0.3s ease !important;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white !important;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease !important;
 }
 
 .vote-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
 .vote-btn::after {
-    display: none;
+  display: none;
 }
 
 .hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #0066cc, #003366);
-    position: relative;
-    overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(135deg, #0066cc, #003366);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23FFFFFF" fill-opacity="0.05" d="M0 0h200v200H0z"/></svg>') repeat;
-    animation: backgroundScroll 20s linear infinite;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23FFFFFF" fill-opacity="0.05" d="M0 0h200v200H0z"/></svg>')
+    repeat;
+  animation: backgroundScroll 20s linear infinite;
 }
 
 @keyframes backgroundScroll {
-    from { background-position: 0 0; }
-    to { background-position: 200px 200px; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 200px;
+  }
 }
 
 .hero-content {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 2rem;
 }
 
 .animate-title {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s forwards;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .countdown {
-    display: flex;
-    gap: 2rem;
-    margin: 2rem 0;
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
 .countdown-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 15px;
-    min-width: 120px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
-    transform: translateY(0);
-    transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 15px;
+  min-width: 120px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  transition: all 0.3s ease;
 }
 
 .countdown-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .countdown-item span:first-child {
-    font-size: 3rem;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .candidates {
-    padding: 8rem 4rem;
-    background: #f8f9fa;
+  padding: 8rem 4rem;
+  background: #f8f9fa;
 }
 
 .candidates h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1a1a1a;
 }
 
 .candidates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .candidate-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
-    position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
 }
 
 .candidate-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .candidate-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: all 0.4s ease;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: all 0.4s ease;
 }
 
 .candidate-card:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .candidate-card h3 {
-    padding: 1.5rem;
-    margin: 0;
-    font-size: 1.5rem;
-    color: #1a1a1a;
+  padding: 1.5rem;
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1a1a1a;
 }
 
 .candidate-card p {
-    padding: 0 1.5rem 1.5rem;
-    color: #666;
-    font-size: 1.1rem;
+  padding: 0 1.5rem 1.5rem;
+  color: #666;
+  font-size: 1.1rem;
 }
 
 .polls {
-    padding: 8rem 4rem;
-    background: white;
+  padding: 8rem 4rem;
+  background: white;
 }
 
 .polls h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1a1a1a;
 }
 
 .poll-chart {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .poll-bar {
-    margin-bottom: 2rem;
-    position: relative;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .party-name {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #1a1a1a;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a1a1a;
 }
 
 .bar {
-    background: #e9ecef;
-    height: 40px;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  background: #e9ecef;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .bar::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: linear-gradient(45deg, #007bff, #00a6ff);
-    animation: fillBar 1.5s ease forwards;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(45deg, #007bff, #00a6ff);
+  animation: fillBar 1.5s ease forwards;
 }
 
 .percentage {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-weight: bold;
-    z-index: 1;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    align-items: center;
-    justify-content: center;
-    z-index: 1100;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
 }
 
 .modal-content {
-    background: white;
-    padding: 3rem;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    transform: translateY(0);
-    animation: modalAppear 0.3s ease;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  animation: modalAppear 0.3s ease;
+}
+
+.errorMessage {
+  color: red;
+  display: none;
 }
 
 @keyframes modalAppear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-content h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #1a1a1a;
-    font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  font-size: 2rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 input {
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
-    outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
 }
 
 button {
-    padding: 1rem;
-    background: linear-gradient(45deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 1rem;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
 .voting-system {
-    padding: 8rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 8rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .voting-system h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #1a1a1a;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1a1a1a;
 }
 
 .party-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
 }
 
 .party-option {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: all 0.3s ease;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .party-option:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .deputy-list {
-    padding: 2rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .deputy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 .deputy-option {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .deputy-option:hover {
-    background: #e9ecef;
-    transform: translateX(5px);
+  background: #e9ecef;
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
-    }
-    
-    .nav-links {
-        gap: 1rem;
-    }
-    
-    .animate-title {
-        font-size: 2.5rem;
-    }
-    
-    .countdown {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .countdown-item {
-        min-width: 100px;
-    }
-    
-    .candidates, .polls, .voting-system {
-        padding: 4rem 1rem;
-    }
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .animate-title {
+    font-size: 2.5rem;
+  }
+
+  .countdown {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .countdown-item {
+    min-width: 100px;
+  }
+
+  .candidates,
+  .polls,
+  .voting-system {
+    padding: 4rem 1rem;
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fillBar {
-    from { width: 0; }
-    to { width: var(--percentage); }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--percentage);
+  }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .candidates-grid {
-        flex-direction: column;
-        align-items: center;
-    }
+  .candidates-grid {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .poll-chart {
-        flex-direction: column;
-    }
+  .poll-chart {
+    flex-direction: column;
+  }
 
-    .poll-bar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .poll-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .bar {
-        width: 100%;
-        margin-left: 0;
-    }
+  .bar {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 480px) {
-    .navbar {
-        padding: 0.5rem;
-    }
+  .navbar {
+    padding: 0.5rem;
+  }
 
-    .nav-links {
-        gap: 0.25rem;
-    }
+  .nav-links {
+    gap: 0.25rem;
+  }
 
-    .hero {
-        padding: 1rem;
-    }
+  .hero {
+    padding: 1rem;
+  }
 
-    .candidate-card {
-        padding: 0.5rem;
-    }
+  .candidate-card {
+    padding: 0.5rem;
+  }
 
-    .modal-content {
-        padding: 1rem;
-    }
+  .modal-content {
+    padding: 1rem;
+  }
 
-    .voting-system {
-        padding: 1rem;
-    }
+  .voting-system {
+    padding: 1rem;
+  }
 }

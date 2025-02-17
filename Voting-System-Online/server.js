@@ -3,11 +3,14 @@ import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import cors from 'cors';
 
 dotenv.config();
 
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
 // Lidhja me MongoDB
@@ -18,9 +21,11 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Modeli User
 const userSchema = new mongoose.Schema({
-    leternjoftimi: { type: String, required: true, unique: true },
+    leternjoftimi: {
+        type: Number, required: true, unique: true
+    },
     password: { type: String, required: true },
-    isVoted: {type: Boolean, default:false}
+    isVoted: { type: Boolean, default: false }
 });
 
 const User = mongoose.model("User", userSchema);
@@ -81,7 +86,7 @@ app.post("/register", async (req, res) => {
         const user = new User({ leternjoftimi, password: hashedPassword });
         await user.save();
 
-        res.status(201).json({ message: "✅ Përdoruesi u regjistrua me sukses!" });
+        res.status(201).json({ message: "✅ Përdoruesi u regjistrua me sukses!", success: true });
     } catch (err) {
         console.error("❌ Gabim në regjistrim:", err);
         res.status(500).json({ message: "Ndodhi një gabim, provo përsëri!" });
