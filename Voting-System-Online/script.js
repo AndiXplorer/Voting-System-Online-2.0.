@@ -76,6 +76,7 @@ const votingSystem = document.getElementById('votingSystem');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById("signupForm");
 const registerBtn = document.getElementById("registerBtn")
+const errorMessage = document.querySelector(".errorMessage");
 
 function openSignup() {
     document.getElementById("loginModal").style.display = "none";
@@ -105,9 +106,6 @@ signupForm.addEventListener("submit", async (event) => {
             leternjoftimi,
             password,
         });
-
-        console.log("response.data.success", response.data.success)
-        console.log("response.data", response.data)
 
         if (response.data.success) {
             signinModal.style.display = 'none';
@@ -147,24 +145,40 @@ loginBtn.addEventListener('click', (e) => {
     }
 });
 
-loginForm.addEventListener('submit', (e) => {
+loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const personalNumber = loginForm.querySelector('input[type="text"]').value;
+    const leternjoftimi = loginForm.querySelector('input[type="text"]').value;
     const password = loginForm.querySelector('input[type="password"]').value;
 
-    if (validateLogin(personalNumber, password)) {
-        loginModal.style.display = 'none';
-        votingSystem.classList.remove('hidden');
-        initializeVotingSystem();
-        scrollToVotingSystem();
+    if (validateLogin(leternjoftimi, password)) {
+        try {
+            const response = await axios.post("http://localhost:5000/login", {
+                leternjoftimi,
+                password,
+            });
+
+            loginModal.style.display = "none";
+            votingSystem.classList.remove("hidden");
+            initializeVotingSystem();
+            scrollToVotingSystem();
+        } catch (error) {
+            errorMessage.style.display = "flex";
+        }
     }
 });
+
 
 function validateLogin(personalNumber, password) {
     if (personalNumber.length < 6) {
         alert('Numri personal duhet të ketë së paku 6 karaktere!');
         return false;
     }
+
+    // if (typeof personalNumber !== 'number') {
+    //     alert('Numri personal duhet të jetë numër!');
+    //     return false;
+    // }
+
     if (password.length < 6) {
         alert('Fjalëkalimi duhet të ketë së paku 6 karaktere!');
         return false;
