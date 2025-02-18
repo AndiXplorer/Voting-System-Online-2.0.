@@ -31,8 +31,6 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 
-//NO COMMENT ss
-
 // Votimi
 app.post("/vote", async (req, res) => {
     try {
@@ -86,7 +84,8 @@ app.post("/register", async (req, res) => {
         const user = new User({ leternjoftimi, password: hashedPassword });
         await user.save();
 
-        res.status(201).json({ message: "✅ Përdoruesi u regjistrua me sukses!", success: true });
+        res.status(201).json({ message: "✅ Përdoruesi u regjistrua me sukses!", success: true, leternjoftimi });
+
     } catch (err) {
         console.error("❌ Gabim në regjistrim:", err);
         res.status(500).json({ message: "Ndodhi një gabim, provo përsëri!" });
@@ -113,7 +112,7 @@ app.post("/login", async (req, res) => {
         // Krijo JWT Token
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        res.json({ message: "✅ Login i suksesshëm!", token });
+        res.json({ message: "✅ Login i suksesshëm!", token, leternjoftimi });
     } catch (err) {
         console.error("❌ Gabim në login:", err);
         res.status(500).json({ message: "Ndodhi një gabim, provo përsëri!" });
