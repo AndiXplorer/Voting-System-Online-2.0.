@@ -119,13 +119,21 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// ✅ GET 
-app.get("/users", async (req, res) => {
+// ✅ GET user by personal number
+app.get("/users/:leternjoftimi", async (req, res) => {
     try {
-        const users = await User.find().select("-password"); // Mos kthe password-in
-        res.json(users);
+        const { leternjoftimi } = req.params;
+
+        // Gjej user-in sipas letërnjoftimit
+        const user = await User.findOne({ leternjoftimi });
+
+        if (!user) {
+            return res.status(404).json({ message: "❌ Përdoruesi nuk u gjet!" });
+        }
+
+        res.json({ isVoted: user.isVoted });
     } catch (err) {
-        console.error("❌ Gabim në marrjen e përdoruesve:", err);
+        console.error("❌ Gabim në marrjen e statusit të përdoruesit:", err);
         res.status(500).json({ message: "Ndodhi një gabim, provo përsëri!" });
     }
 });

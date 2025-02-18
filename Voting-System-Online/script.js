@@ -115,7 +115,7 @@ signupForm.addEventListener("submit", async (event) => {
 
             signinModal.style.display = 'none';
             votingSystem.classList.remove('hidden');
-            initializeVotingSystem();
+            await initializeVotingSystem();
             scrollToVotingSystem();
         } else {
             alert("Gabim: " + response.data.message);
@@ -209,15 +209,34 @@ function generateDeputies(count, party) {
     }));
 }
 
-function initializeVotingSystem() {
+async function initializeVotingSystem() {
     const partyList = document.querySelector('.party-list');
 
-    partyList.innerHTML = parties.map((party, index) => `
-        <div class="party-option" data-party-id="${party.id}" style="animation: fadeInUp ${0.3 + index * 0.1}s ease forwards">
-            <h3>${party.name}</h3>
-            <button onclick="showDeputies(${party.id})">Zgjedh Deputetët</button>
-        </div>
-    `).join('');
+    const leternjoftimi = localStorage.getItem("leternjoftimi");
+    if (!leternjoftimi) return;
+
+    try {
+        const response = await fetch(`http://localhost:5000/users/${leternjoftimi}`);
+        const data = await response.json();
+
+        if (data.isVoted) {
+            partyList.innerHTML = `
+            <div class="party-option">
+                <h3>Ju keni votuar tashmë! Faleminderit për pjesëmarrjen.</h3>
+            </div>
+        `;
+
+        } else {
+            partyList.innerHTML = parties.map((party, index) => `
+                < div class= "party-option" data - party - id="${party.id}" style = "animation: fadeInUp ${0.3 + index * 0.1}s ease forwards" >
+                    <h3>${party.name}</h3>
+                    <button onclick="showDeputies(${party.id})">Zgjedh Deputetët</button>
+                </ >
+                `).join('');
+        }
+    } catch (error) {
+        console.error("❌ Gabim në kontrollimin e statusit të votimit:", error);
+    }
 }
 
 let selectedDeputies = [];
@@ -229,7 +248,7 @@ function showDeputies(partyId) {
     deputyList.classList.remove('hidden');
 
     deputyList.innerHTML = `
-        <h3>Zgjedh deputetët e partisë ${party.name}</h3>
+                < h3 > Zgjedh deputetët e partisë ${party.name}</ >
         <p>Zgjedh deri në 10 deputetë</p>
         <div class="deputy-grid">
             ${party.deputies.map((deputy, index) => `
@@ -247,6 +266,7 @@ function showDeputies(partyId) {
             <button onclick="backToParties()" class="back-btn">Kthehu</button>
         </div>
     `;
+
 }
 
 function handleDeputySelection(checkbox, deputyId) {
@@ -268,7 +288,7 @@ function handleDeputySelection(checkbox, deputyId) {
 function updateSelectionCounter() {
     const counter = document.createElement('div');
     counter.className = 'selection-counter';
-    counter.textContent = `${selectedDeputies.length}/10 deputetë të zgjedhur`;
+    counter.textContent = `${selectedDeputies.length} / 10 deputetë të zgjedhur`;
     const existingCounter = document.querySelector('.selection-counter');
     if (existingCounter) {
         existingCounter.replaceWith(counter);
@@ -298,12 +318,12 @@ async function submitVote() {
 
         if (response.status === 200) {
             votingSystem.innerHTML = `
-                <div class="success-message" style="text-align: center; animation: fadeInUp 0.5s ease">
+            < div class= "success-message" style = "text-align: center; animation: fadeInUp 0.5s ease" >
                     <h2>Faleminderit për votimin tuaj!</h2>
                     <p>Votimi juaj u regjistrua me sukses në sistemin tonë.</p>
                     <div class="checkmark">✓</div>
-                </div>
-            `;
+                </ >
+                `;
         }
     } catch (error) {
         alert(error.response?.data?.message || "❌ Ndodhi një gabim!");
