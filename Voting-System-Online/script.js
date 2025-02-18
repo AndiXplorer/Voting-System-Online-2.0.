@@ -108,6 +108,11 @@ signupForm.addEventListener("submit", async (event) => {
         });
 
         if (response.data.success) {
+
+
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("leternjoftimi", response.data.leternjoftimi);
+
             signinModal.style.display = 'none';
             votingSystem.classList.remove('hidden');
             initializeVotingSystem();
@@ -157,10 +162,14 @@ loginForm.addEventListener("submit", async (e) => {
                 password,
             });
 
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("leternjoftimi", response.data.leternjoftimi);
+
             loginModal.style.display = "none";
             votingSystem.classList.remove("hidden");
             initializeVotingSystem();
             scrollToVotingSystem();
+
         } catch (error) {
             errorMessage.style.display = "flex";
         }
@@ -273,20 +282,32 @@ function backToParties() {
     document.querySelector('.party-list').classList.remove('hidden');
 }
 
-function submitVote() {
+async function submitVote() {
     if (selectedDeputies.length === 0) {
         alert('Ju lutem zgjedhni së paku një deputet!');
         return;
     }
 
-    votingSystem.innerHTML = `
-        <div class="success-message" style="text-align: center; animation: fadeInUp 0.5s ease">
-            <h2>Faleminderit për votimin tuaj!</h2>
-            <p>Votimi juaj u regjistrua me sukses në sistemin tonë.</p>
-            <div class="checkmark">✓</div>
-        </div>
-    `;
-    setCookie('voted', 'true', 365);
+    const leternjoftimi = localStorage.getItem("leternjoftimi");
+
+    try {
+        const response = await axios.post("http://localhost:5000/vote", {
+            leternjoftimi,
+        });
+
+
+        if (response.status === 200) {
+            votingSystem.innerHTML = `
+                <div class="success-message" style="text-align: center; animation: fadeInUp 0.5s ease">
+                    <h2>Faleminderit për votimin tuaj!</h2>
+                    <p>Votimi juaj u regjistrua me sukses në sistemin tonë.</p>
+                    <div class="checkmark">✓</div>
+                </div>
+            `;
+        }
+    } catch (error) {
+        alert(error.response?.data?.message || "❌ Ndodhi një gabim!");
+    }
 }
 
 window.onclick = (event) => {
