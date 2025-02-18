@@ -1,17 +1,17 @@
 //homepage
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     if (getCookie('visited')) {
-//         Swal.fire({
-//             title: 'Mirësevini përsëri!',
-//             text: 'Jemi të lumtur që jeni rikthyer.',
-//             icon: 'info',
-//             confirmButtonText: 'OK'
-//         });
-//     } else {
-//         setCookie('visited', 'true', 365);
-//     }
-// });
+document.addEventListener('DOMContentLoaded', function () {
+    if (getCookie('visited')) {
+        Swal.fire({
+            title: 'Mirësevini përsëri!',
+            text: 'Jemi të lumtur që jeni rikthyer.',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    } else {
+        setCookie('visited', 'true', 365);
+    }
+});
 
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
