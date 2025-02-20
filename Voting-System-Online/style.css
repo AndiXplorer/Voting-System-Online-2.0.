@@ -544,3 +544,15 @@ button:hover {
     padding: 1rem;
   }
 }
+
+
+.voter-count {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.voter-count h2 {
+  font-size: 2rem;
+  color: #1a1a1a;
+}
