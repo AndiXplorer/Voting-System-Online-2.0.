@@ -228,11 +228,11 @@ async function initializeVotingSystem() {
 
         } else {
             partyList.innerHTML = parties.map((party, index) => `
-                < div class= "party-option" data - party - id="${party.id}" style = "animation: fadeInUp ${0.3 + index * 0.1}s ease forwards" >
+                <div class="party-option" data-party-id="${party.id}" style="animation: fadeInUp ${0.3 + index * 0.1}s ease forwards">
                     <h3>${party.name}</h3>
                     <button onclick="showDeputies(${party.id})">Zgjedh Deputetët</button>
-                </ >
-                `).join('');
+                </div>
+            `).join('');
         }
     } catch (error) {
         console.error("❌ Gabim në kontrollimin e statusit të votimit:", error);
@@ -248,7 +248,7 @@ function showDeputies(partyId) {
     deputyList.classList.remove('hidden');
 
     deputyList.innerHTML = `
-                < h3 > Zgjedh deputetët e partisë ${party.name}</ >
+        <h3>Zgjedh deputetët e partisë ${party.name}</h3>
         <p>Zgjedh deri në 10 deputetë</p>
         <div class="deputy-grid">
             ${party.deputies.map((deputy, index) => `
@@ -266,7 +266,6 @@ function showDeputies(partyId) {
             <button onclick="backToParties()" class="back-btn">Kthehu</button>
         </div>
     `;
-
 }
 
 function handleDeputySelection(checkbox, deputyId) {
@@ -318,12 +317,12 @@ async function submitVote() {
 
         if (response.status === 200) {
             votingSystem.innerHTML = `
-            < div class= "success-message" style = "text-align: center; animation: fadeInUp 0.5s ease" >
+                <div class="success-message" style="text-align: center; animation: fadeInUp 0.5s ease">
                     <h2>Faleminderit për votimin tuaj!</h2>
                     <p>Votimi juaj u regjistrua me sukses në sistemin tonë.</p>
                     <div class="checkmark">✓</div>
-                </ >
-                `;
+                </div>
+            `;
         }
     } catch (error) {
         alert(error.response?.data?.message || "❌ Ndodhi një gabim!");
