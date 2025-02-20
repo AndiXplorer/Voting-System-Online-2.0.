@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<style>
+    <style>
       .voter-count {
         padding: 4rem 2rem;
         background: #f8f9fa;
@@ -93,7 +93,7 @@
           <span class="party-name">LDK</span>
           <div class="bar"><span class="percentage">25%</span></div>
         </div>
-        <div class="poll-bar"  data-party="PDK" data-percentage="15">
+        <div class="poll-bar" data-party="PDK" data-percentage="15">
           <span class="party-name">PDK</span>
           <div class="bar"><span class="percentage">15%</span></div>
         </div>
@@ -184,11 +184,13 @@
 
       async function fetchVoterCount() {
         try {
-          const response = await axios.get("http://localhost:5000/count");
+          const response = await axios.get('http://localhost:5000/count');
           const count = response.data;
-          document.getElementById("voterCount").textContent = `Numri i votuesve: ${count}`;
+          document.getElementById(
+            'voterCount',
+          ).textContent = `Numri i votuesve: ${count}`;
         } catch (error) {
-          console.error("❌ Gabim në marrjen e numrit të votuesve:", error);
+          console.error('❌ Gabim në marrjen e numrit të votuesve:', error);
         }
       }
 
@@ -197,4 +199,3 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
-
